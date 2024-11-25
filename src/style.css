@@ -1,0 +1,19 @@
+nav{
+  display: flex;
+  align-items: center;
+  height: 70px;
+  justify-content: center;
+}
+p{
+  font-size: larger;
+  font-style:normal;
+  font-weight: bold;
+  color: white;
+  height:10px;
+  font-family:Verdana, Geneva, Tahoma, sans-serif  
+}
+body {
+  background-image: url(/background.jpg);
+  background-position: center; 
+  background-repeat: no-repeat; 
+}
