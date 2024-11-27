@@ -26,20 +26,14 @@ export async function getDatosActividad(event: Event) {
   domNombreActividad!.innerHTML = nombreActividad;
 
   const imagen = document.getElementById("imagenGenerada") as HTMLImageElement;
-  if (
-    imagenGenerada.hits &&
-    imagenGenerada.hits[0] &&
-    imagenGenerada.hits[0].largeImageURL
-  ) {
+  if (imagenGenerada.hits &&imagenGenerada.hits[0] &&imagenGenerada.hits[0].largeImageURL) {
     imagen.setAttribute("src", imagenGenerada.hits[0].largeImageURL);
   } else {
     console.error("La imagen generada no está disponible.");
   }
 }
 
-document
-  .getElementById("actividadForm")
-  ?.addEventListener("submit", getDatosActividad);
+document.getElementById("actividadForm")?.addEventListener("submit", getDatosActividad); // el event listener que llama a la funcion principal
 
 async function hacerPeticion(
   tipoActividad: string,
@@ -131,7 +125,8 @@ async function hacerPeticionFoto(): Promise<void> {
     );
     const data = await resp.json();
     imagenGenerada = data;
-    console.log(imagenGenerada.hits[0].largeImageURL);
+    const numeroRandom=Math.floor(Math.random()*imagenGenerada.hits.length)
+    console.log(imagenGenerada.hits[numeroRandom].largeImageURL);
   } catch (error) {
     console.error("Error al hacer la petición de la imagen", error);
     const imagen = document.getElementById(
